@@ -7,9 +7,8 @@ Created on Mon Jan 18 03:01:24 2021
 """
 
 import streamlit as st
-from cv2 import imdecode, cvtColor, resize, COLOR_BGR2RGB
+from PIL import Image
 import numpy as np
-import scipy as sp
 from tensorflow.keras.models import load_model
 import os
 
@@ -29,14 +28,12 @@ st.markdown("""
 uploaded_file = st.file_uploader("Step 1: Select a photo to upload.")
 
 if st.button('Malignant or Benign?'):
-    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    opencv_image = imdecode(file_bytes, 1)
-    opencv_image = cvtColor(opencv_image, COLOR_BGR2RGB) 
-    opencv_image = resize(opencv_image, (224, 224))
-    st.image(opencv_image, channels="RGB")
-    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+    img = Image.open(uploaded_file.name)
+    img.thumbnail((224, 224), Image.ANTIALIAS)
+    st.image(img, channels="RGB")
+#    os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
     model = load_model('cancer.keras')
-    prob = model(opencv_image.reshape(1, 224, 224, 3), training=False)[0]
+    prob = model(np.array(img).reshape(1, 224, 224, 3), training=False)[0]
     if prob <= 0.5:
         prediction = 'Benign'
     else:
