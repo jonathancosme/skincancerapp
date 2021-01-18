@@ -1,7 +1,7 @@
 import tensorflow as tf
 
-LITE_MODEL = '/home/ubuntu/skincancerapp/cancer.tflite'
-#LITE_MODEL = './cancer.tflite'
+#LITE_MODEL = '/home/ubuntu/skincancerapp/cancer.tflite'
+LITE_MODEL = './cancer.tflite'
 
 def get_prob(img):
     # Load the TFLite model and allocate tensors.
