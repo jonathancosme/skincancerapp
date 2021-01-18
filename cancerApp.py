@@ -12,7 +12,6 @@ import streamlit as st
 from funcs import *
 from PIL import Image
 
-model = load_keras_model()
 
 st.markdown("""
             # Skin Growth Classifier*  
@@ -35,7 +34,8 @@ if st.button('Malignant or Benign?'):
     img = img.resize((224,224))
     img = np.array(img)
     st.image(img, channels="RGB")
-    prob = model(np.array([img]), training=False)[0]
+    img = np.array([img.astype(np.float32)])
+    prob = get_prob(img)
     if prob <= 0.5:
         prediction = 'Benign'
     else:
