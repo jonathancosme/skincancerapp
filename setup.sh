@@ -1,4 +1,5 @@
 mkdir -p ~/.streamlit/
+cp /cancer.keras ~/.streamlit/
 
 echo "\
 [general]\n\
