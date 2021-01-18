@@ -11,6 +11,15 @@ from PIL import Image
 import numpy as np
 from tensorflow.keras.models import load_model
 import os
+MODEL_PATH = './cancer.keras'
+
+
+@st.cache(allow_output_mutation=True)
+def load_model():
+    model = load_model(MODEL_PATH)
+    model._make_predict_function()
+    model.summary()  # included to make it visible when model is reloaded
+    return model
 
 st.markdown("""
             # Skin Growth Classifier*  
@@ -33,7 +42,7 @@ if st.button('Malignant or Benign?'):
     img = img.resize((224,224))
     img = np.array(img)
     st.image(img, channels="RGB")
-    model = load_model('~/cancer.keras')
+    model= load_model()
     prob = model(np.array([img]), training=False)[0]
     if prob <= 0.5:
         prediction = 'Benign'
