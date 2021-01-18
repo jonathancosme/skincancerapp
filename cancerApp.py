@@ -6,13 +6,12 @@ Created on Mon Jan 18 03:01:24 2021
 @author: jcosme
 """
 
-import streamlit as st
-from PIL import Image
 import numpy as np
-from tensorflow.keras.models import load_model
-import os
+import streamlit as st
+import tensorflow as tf
+from PIL import Image
 
-model = load_model('cancer.keras')
+model = tf.keras.models.load_model('cancer.keras')
 
 st.markdown("""
             # Skin Growth Classifier*  
