@@ -11,7 +11,7 @@ from PIL import Image
 import numpy as np
 from tensorflow.keras.models import load_model
 import os
-MODEL_PATH = './cancer.keras'
+MODEL_PATH = '/app/cancer.keras'
 
 
 @st.cache(allow_output_mutation=True)
