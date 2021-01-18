@@ -8,10 +8,11 @@ Created on Mon Jan 18 03:01:24 2021
 
 import numpy as np
 import streamlit as st
-import tensorflow as tf
+#import tensorflow as tf
+from funcs import *
 from PIL import Image
 
-model = tf.keras.models.load_model('cancer.keras')
+model = load_keras_model()
 
 st.markdown("""
             # Skin Growth Classifier*  
