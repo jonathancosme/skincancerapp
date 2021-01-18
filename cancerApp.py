@@ -33,7 +33,7 @@ if st.button('Malignant or Benign?'):
     img = img.resize((224,224))
     img = np.array(img)
     st.image(img, channels="RGB")
-    model = load_model('cancer.keras')
+    model = load_model('./cancer.keras')
     prob = model(np.array([img]), training=False)[0]
     if prob <= 0.5:
         prediction = 'Benign'
