@@ -12,7 +12,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 import os
 
-model = tf.keras.models.load_model('cancer.keras')
+model = load_model('cancer.keras')
 
 st.markdown("""
             # Skin Growth Classifier*  
