@@ -7,7 +7,7 @@ Created on Mon Jan 18 03:01:24 2021
 """
 
 import streamlit as st
-import cv2
+from cv2 import imdecode, cvtColor, resize, COLOR_BGR2RGB
 import numpy as np
 import scipy as sp
 from tensorflow.keras.models import load_model
@@ -30,9 +30,9 @@ uploaded_file = st.file_uploader("Step 1: Select a photo to upload.")
 
 if st.button('Malignant or Benign?'):
     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    opencv_image = cv2.imdecode(file_bytes, 1)
-    opencv_image = cv2.cvtColor(opencv_image, cv2.COLOR_BGR2RGB) 
-    opencv_image = cv2.resize(opencv_image, (224, 224))
+    opencv_image = imdecode(file_bytes, 1)
+    opencv_image = cvtColor(opencv_image, COLOR_BGR2RGB) 
+    opencv_image = resize(opencv_image, (224, 224))
     st.image(opencv_image, channels="RGB")
     os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
     model = load_model('cancer.keras')
