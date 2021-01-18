@@ -11,7 +11,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image
 
-model = tf.keras.models.load_model('~/.cancer.keras')
+model = tf.keras.models.load_model('cancer.keras')
 
 st.markdown("""
             # Skin Growth Classifier*  
