@@ -1,0 +1,5 @@
+tf_nightly==2.5.0.dev20210114
+streamlit==0.74.1
+opencv_python==4.5.1.48
+numpy==1.19.5
+tensorflow==2.4.0
