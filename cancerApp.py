@@ -20,8 +20,8 @@ st.markdown("""
 
 st.markdown("""
             This app will classify a user-uploaded photo (presumably of a skin growth) as either 'Benign' or 'Malignant.'  
-              ### Steps:  
-            1. Take a photo of a skin growth (make sure it's VERY close-up).  
+              ## Steps:  
+            1. Take a photo of a skin growth (make sure it's VERY close-up; see "Details" section below).  
             2. Upload the photo  
             3. Select the 'Malignant or Benign?' button  
             """
@@ -43,14 +43,28 @@ if st.button('Malignant or Benign?'):
     st.markdown('## ' + prediction + '!')
 
 st.markdown("""
-            #### More Info  
+            ### More Info  
             This app uses a convolutional neural network built with Tensorflow, using this [dataset](https://www.kaggle.com/fanconic/skin-cancer-malignant-vs-benign).  
             It achieved around 82% accuracy on both the training, and test, datasets.
             """
             )
 
 st.markdown("""
-            *This app should NOT be relied upon for any medical diagnosis.   
-            Please consult a physician for any concerns you may have.
+            # *This app should NOT be relied upon for any medical diagnosis.   
+            ### Please consult a physician for any concerns you may have.
             """
             )
+
+st.markdown("""
+            ### Details 
+            If you take a photo that is too far away, the algo will not classify it correctly. 
+            """ )
+st.markdown("""for example, this one is too far away, and get incorrectly classified as "malignant"  
+            """ )
+st.image('./images/wrong.png', width=200)
+st.markdown("""when the photo is taken closer (or copped) it is correctly classified as "benign"  
+            """ )
+st.image('./images/correct.png', width=200)
+st.markdown("""Apparently cats are classified as "malignant"  
+            """ )
+st.image('./images/malignantCat.png', width=200)
